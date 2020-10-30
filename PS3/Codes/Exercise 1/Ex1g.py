@@ -13,7 +13,7 @@ import time
 
 t = time.time()
 
-H_S = 15
+H = 50
 
 theta = .679
 beta = .988
@@ -60,8 +60,7 @@ while progress > conv: #until value function sufficiently changes
         cont[k] = np.argmax(m[:,k])
         rewardH[k] = reward[np.int(cont[k])][k]
 
-    if it>=H_S:
-        for u in np.linspace(0,100,1):
+        for u in np.linspace(0,H,1):
             for y in gs:
                 value[y] = rewardH[y]+beta*value[np.int(cont[y])]
         
@@ -104,3 +103,5 @@ plt.ylabel('Capital policy function')
 plt.title('Capital policy function plot 1f')
 plt.savefig('Capital policy function plot 1f.png')
 plt.show()
+
+
